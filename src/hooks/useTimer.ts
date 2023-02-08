@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
-
-interface TimerHook {
-  getTimer: () => string;
-  isRunning: boolean;
-  start: () => void;
-  pause: () => void;
-  setTimer: (value: number) => void;
-  setIsRunning: (value: boolean) => void;
-}
+import {useEffect, useMemo, useState} from "react";
 
 /**
  * A custom hook that provides a timer logic and a timer in the format of mm:ss
  * @return {TimerHook}
  */
-export function useTimer(defaultValue: number): TimerHook {
+export function useTimer(defaultValue: number) {
   const [timer, setTimer] = useState<number>(defaultValue * 60);
   const [isRunning, setIsRunning] = useState<boolean>(false);
 
@@ -29,10 +20,10 @@ export function useTimer(defaultValue: number): TimerHook {
   }, [isRunning, timer]);
 
   /**
-   * Get the timer in the format of mm:ss
+   * Memoized timer in the format of mm:ss
    * @return {string} the timer in the format of mm:ss
    */
-  function getTimer(): string {
+  const formattedTimer = useMemo(() => {
     const minutes = Math.floor(timer / 60);
     const formattedSeconds = (timer - minutes * 60).toLocaleString("en-US", {
       minimumIntegerDigits: 2,
@@ -45,7 +36,7 @@ export function useTimer(defaultValue: number): TimerHook {
     });
 
     return `${formattedMinutes}:${formattedSeconds}`;
-  }
+  }, [timer]);
 
   function start(): void {
     setIsRunning(true);
@@ -57,7 +48,7 @@ export function useTimer(defaultValue: number): TimerHook {
 
   return {
     isRunning,
-    getTimer,
+    formattedTimer,
     setTimer,
     setIsRunning,
     start,

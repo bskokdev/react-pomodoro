@@ -1,86 +1,44 @@
-import { useTimer } from "../hooks/useTimer";
-import { ActionButton } from "./ActionButton";
-import { useMemo } from "react";
-import { usePomodoro } from "../hooks/usePomodoro";
-
-interface IPomodoroTimerProps {
-  pomodoroMinutes: number;
-  shortBreakMinutes: number;
-  longBreakMinutes: number;
-}
+import {PomodoroControls} from "./controls/PomodoroControls";
+import {TimerControl} from "./controls/TimerControl";
+import {usePomodoro} from "../hooks/usePomodoro";
 
 /**
  * Pomodoro timer component is responsible for rendering the timer and its controls
  */
-export function PomodoroTimer(props: IPomodoroTimerProps) {
-  // reconstruct the props
-  const { pomodoroMinutes, shortBreakMinutes, longBreakMinutes } = props;
-  // Timer logic
-  const { isRunning, getTimer, setTimer, setIsRunning, start, pause } =
-    useTimer(pomodoroMinutes);
-
-  // Pomodoro timers
-  const { pomodoro, takeShortBreak, takeLongBreak } = usePomodoro({
-    setTimer,
-    setIsRunning,
-    pomodoroMinutes,
-    shortBreakMinutes,
-    longBreakMinutes,
+export function PomodoroTimer() {
+  // calling the hook instead of props drilling
+  const {
+    isRunning,
+    formattedTimer,
+    start,
+    pause,
+    pomodoro,
+    takeShortBreak,
+    takeLongBreak,
+  } = usePomodoro({
+    pomodoroMinutes: 25,
+    shortBreakMinutes: 5,
+    longBreakMinutes: 15,
   });
 
-  // memoize the main button to prevent unnecessary re-renders
-  const mainButton: JSX.Element = useMemo(() => {
-    if (isRunning) {
-      return (
-        <ActionButton
-          handleClick={pause}
-          color="bg-red-300"
-          hoverColor="bg-red-400"
-          text="Pause"
-        />
-      );
-    }
-    return (
-      <ActionButton
-        handleClick={start}
-        color="bg-green-300"
-        hoverColor="bg-green-400"
-        text="Start"
-      />
-    );
-  }, [isRunning]);
+  // control actions objects for components
+  const controlActions = { pomodoro, takeShortBreak, takeLongBreak };
+  const timerControl = { isRunning, start, pause };
 
   return (
     <div className="flex flex-col items-center justify-center bg-red-100 rounded-2xl py-10 px-16">
       {/*Timer controls*/}
-      <div className="text-gray-700 text-3xl">
-        <ActionButton
-          handleClick={pomodoro}
-          color="bg-red-400"
-          hoverColor="hover:bg-red-500"
-          text="Pomodoro"
-        />
-        <ActionButton
-          handleClick={takeShortBreak}
-          color="bg-green-200"
-          hoverColor="hover:bg-green-300"
-          text="Short break"
-        />
-        <ActionButton
-          handleClick={takeLongBreak}
-          color="bg-rose-300"
-          hoverColor="hover:bg-rose-400"
-          text="Long break"
-        />
-      </div>
+      <PomodoroControls {...controlActions} />
       {/*Timer render*/}
       <div className="py-10">
-        <h2 className="text-center text-9xl font-extrabold text-gray-700">
-          {getTimer()}
+        <h2 className="text-center text-7xl md:text-9xl font-extrabold text-gray-700">
+          {formattedTimer}
         </h2>
       </div>
       {/*Start or pause button*/}
-      <div className="text-5xl text-gray-700">{mainButton}</div>
+      <div className="text-5xl text-gray-700">
+        <TimerControl {...timerControl} />
+      </div>
     </div>
   );
 }

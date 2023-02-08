@@ -1,44 +1,41 @@
+import { useTimer } from "./useTimer";
+
 interface UsePomodoroProps {
-    setTimer: (timer: number) => void;
-    setIsRunning: (isRunning: boolean) => void;
-    pomodoroMinutes: number;
-    shortBreakMinutes: number;
-    longBreakMinutes: number;
+  pomodoroMinutes: number;
+  shortBreakMinutes: number;
+  longBreakMinutes: number;
 }
 
-interface PomodoroHook {
-    pomodoro: () => void;
-    takeShortBreak: () => void;
-    takeLongBreak: () => void;
-}
+export function usePomodoro({
+  pomodoroMinutes,
+  shortBreakMinutes,
+  longBreakMinutes,
+}: UsePomodoroProps) {
+  const { setTimer, setIsRunning, isRunning, start, pause, formattedTimer } =
+    useTimer(pomodoroMinutes);
 
-export function usePomodoro(props: UsePomodoroProps): PomodoroHook {
-    const {
-        setTimer,
-        setIsRunning,
-        pomodoroMinutes,
-        shortBreakMinutes,
-        longBreakMinutes
-    } = props;
+  function pomodoro(): void {
+    setIsRunning(false);
+    setTimer(pomodoroMinutes * 60);
+  }
 
-    function pomodoro(): void {
-        setIsRunning(false);
-        setTimer(pomodoroMinutes * 60);
-    }
+  function takeShortBreak(): void {
+    setIsRunning(false);
+    setTimer(shortBreakMinutes * 60);
+  }
 
-    function takeShortBreak(): void {
-        setIsRunning(false);
-        setTimer(shortBreakMinutes * 60);
-    }
+  function takeLongBreak(): void {
+    setIsRunning(false);
+    setTimer(longBreakMinutes * 60);
+  }
 
-    function takeLongBreak(): void {
-        setIsRunning(false);
-        setTimer(longBreakMinutes * 60);
-    }
-
-    return {
-        pomodoro,
-        takeShortBreak,
-        takeLongBreak
-    }
+  return {
+    isRunning,
+    formattedTimer,
+    pomodoro,
+    takeShortBreak,
+    takeLongBreak,
+    start,
+    pause,
+  };
 }
