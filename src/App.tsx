@@ -1,12 +1,12 @@
-import { PomodoroTimer } from "./components/PomodoroTimer";
-import { PomodoroGoals } from "./components/goals/PomodoroGoals";
-import { usePomodoro } from "./hooks/usePomodoro";
-import { PomodoroControls } from "./components/controls/PomodoroControls";
-import { TimerControl } from "./components/controls/TimerControl";
 import { AddPomodoro } from "./components/AddPomodoro";
-import React from "react";
-import { useGoals } from "./hooks/useGoals";
+import { PomodoroControls } from "./components/controls/PomodoroControls";
 import { PomodoroGoalsGroupControls } from "./components/controls/PomodoroGoalsGroupControls";
+import { TimerControl } from "./components/controls/TimerControl";
+import { Footer } from "./components/Footer";
+import { PomodoroGoals } from "./components/goals/PomodoroGoals";
+import { PomodoroTimer } from "./components/PomodoroTimer";
+import { useGoals } from "./hooks/useGoals";
+import { usePomodoro } from "./hooks/usePomodoro";
 
 /**
  * This is the application component which loads the app
@@ -73,6 +73,7 @@ function App() {
           )}
         </PomodoroGoals>
       </div>
+      <Footer />
     </div>
   );
 }
