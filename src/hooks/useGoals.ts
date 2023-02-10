@@ -3,9 +3,15 @@ import { Goal } from "../types";
 import { z } from "zod";
 import { isIdxInArrayRange } from "../util";
 
+/**
+ * This hook is responsible for managing the goals.
+ * It allows to add, complete, delete and delete all goals in reusable way
+ */
 export function useGoals() {
   const [goals, setGoals] = useState<Goal[]>([]);
 
+  // load goals from local storage on mount
+  // local storage persists even after page reload
   useEffect(() => {
     const goals = localStorage.getItem("goals");
     if (goals) {
@@ -13,22 +19,22 @@ export function useGoals() {
     }
   }, []);
 
-  //todo: make action functions return booleans for success/failure
   function addGoal(goal: Goal): void {
     // validation
     const addedGoal = z.object({
       name: z.string().min(1),
       finished: z.boolean(),
     });
-    // data not valid -> we return false
+    // data not valid -> we return
     if (!addedGoal.parse(goal)) {
       return;
     }
-    // data valid -> we add the goal and return true
+    // data valid -> we add the goal
     setGoals([goal, ...goals]);
     localStorage.setItem("goals", JSON.stringify([goal, ...goals]));
   }
 
+  // helper which creates a goal from a name and adds it
   function addGoalByName(name: string): void {
     addGoal({ name, finished: false } as Goal);
   }
@@ -46,10 +52,11 @@ export function useGoals() {
   }
 
   function deleteGoal(index: number): void {
-    // array index out of bounds -> we return false
+    // array index out of bounds -> we return
     if (!isIdxInArrayRange(goals, index)) {
       return;
     }
+    // array index in bounds -> we delete the goal
     const newGoals: Goal[] = goals.filter((goal, idx) => idx !== index);
     setGoals(newGoals);
     localStorage.setItem("goals", JSON.stringify(newGoals));

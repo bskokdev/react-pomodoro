@@ -2,18 +2,18 @@ import { ActionButton } from "./ActionButton";
 import { AiFillDelete } from "react-icons/ai";
 
 interface IPomodoroGoalsGroupControls {
-  deleteFinishedGoals: () => void;
+  deleteFinished: () => void;
   deleteAllGoals: () => void;
 }
 
 export function PomodoroGoalsGroupControls({
-  deleteFinishedGoals,
+  deleteFinished,
   deleteAllGoals,
 }: IPomodoroGoalsGroupControls) {
   return (
     <div className="flex gap-x-4 justify-end">
       <ActionButton
-        onClick={deleteFinishedGoals}
+        onClick={deleteFinished}
         text="Finished"
         icon={<AiFillDelete />}
         color="bg-red-400"

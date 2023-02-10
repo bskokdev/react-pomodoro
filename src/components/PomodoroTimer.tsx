@@ -6,7 +6,9 @@ interface IPomodoroTimerProps {
 }
 
 /**
- * Pomodoro timer component is responsible for rendering the timer and its controls
+ * This component renders the timer and additional children (controls etc.)
+ * @param formattedTimer
+ * @param children
  */
 export function PomodoroTimer({formattedTimer, children}: IPomodoroTimerProps) {
     return (
