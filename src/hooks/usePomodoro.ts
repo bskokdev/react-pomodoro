@@ -4,28 +4,34 @@ export function usePomodoro() {
   const {
     setTimer,
     setIsRunning,
+    setIsFinished,
     isRunning,
+    isFinished,
     start,
     pause,
     formattedTimer } = useTimer(25);
 
   function pomodoro(): void {
     setIsRunning(false);
-    setTimer(25 * 60);
+    setIsFinished(false);
+    setTimer(0.1 * 60);
   }
 
   function takeShortBreak(): void {
     setIsRunning(false);
+    setIsFinished(false);
     setTimer(5 * 60);
   }
 
   function takeLongBreak(): void {
     setIsRunning(false);
+    setIsFinished(false);
     setTimer(15 * 60);
   }
 
   return {
     isRunning,
+    isFinished,
     formattedTimer,
     pomodoro,
     takeShortBreak,

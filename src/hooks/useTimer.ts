@@ -7,6 +7,7 @@ import {useEffect, useMemo, useState} from "react";
 export function useTimer(defaultValue: number) {
   const [timer, setTimer] = useState<number>(defaultValue * 60);
   const [isRunning, setIsRunning] = useState<boolean>(false);
+  const [isFinished, setIsFinished] = useState<boolean>(false);
 
   // runs on component mount or if timer or isRunning changes
   // if isRunning is true and timer > 0, start the timer
@@ -16,6 +17,8 @@ export function useTimer(defaultValue: number) {
         setTimer(timer - 1);
       }, 1000);
       return () => clearTimeout(timeoutId);
+    } else if(timer == 0) {
+      setIsFinished(true);
     }
   }, [isRunning, timer]);
 
@@ -40,6 +43,7 @@ export function useTimer(defaultValue: number) {
 
   function start(): void {
     setIsRunning(true);
+    setIsFinished(false);
   }
 
   function pause(): void {
@@ -48,9 +52,11 @@ export function useTimer(defaultValue: number) {
 
   return {
     isRunning,
+    isFinished,
     formattedTimer,
     setTimer,
     setIsRunning,
+    setIsFinished,
     start,
     pause,
   };

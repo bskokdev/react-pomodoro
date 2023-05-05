@@ -6,6 +6,9 @@ import { PomodoroGoals } from "./components/goals/PomodoroGoals";
 import { PomodoroTimer } from "./components/PomodoroTimer";
 import { useGoals } from "./hooks/useGoals";
 import { usePomodoro } from "./hooks/usePomodoro";
+import Sound from 'react-sound';
+import {ActionButton} from "./components/controls/ActionButton";
+import React from "react";
 
 /**
  * This is the application component which loads the app
@@ -13,6 +16,7 @@ import { usePomodoro } from "./hooks/usePomodoro";
 function App() {
   const {
     isRunning,
+    isFinished,
     formattedTimer,
     start,
     pause,
@@ -63,7 +67,18 @@ function App() {
       <div className="flex flex-col gap-y-4 lg:gap-y-10 justify-center">
         <PomodoroTimer formattedTimer={formattedTimer}>
           <PomodoroControls {...controlActions} />
-          <TimerControl {...timerControl} />
+          {!isFinished && <TimerControl {...timerControl} />}
+          {isFinished && (
+              <div>
+                <Sound url="./alarm.wav" playStatus={"PLAYING"} loop={true} />
+                <ActionButton
+                    onClick={pomodoro}
+                    color="bg-orange-300"
+                    hover="hover:bg-orange-400"
+                    text="Reset"
+                />
+              </div>
+          )}
         </PomodoroTimer>
         <PomodoroGoals title="Goals" {...goalsRenderProps}>
           <AddPomodoro addGoalByName={addGoalByName} />
