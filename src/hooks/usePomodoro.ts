@@ -1,8 +1,13 @@
 import { useTimer } from "./useTimer";
 
 export function usePomodoro() {
-  const { setTimer, setIsRunning, isRunning, start, pause, formattedTimer } =
-    useTimer(25);
+  const {
+    setTimer,
+    setIsRunning,
+    isRunning,
+    start,
+    pause,
+    formattedTimer } = useTimer(25);
 
   function pomodoro(): void {
     setIsRunning(false);
