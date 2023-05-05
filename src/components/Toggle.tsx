@@ -16,14 +16,14 @@ export function Toggle({ toggleValue, toggle }: IToggleProps) {
     return (
       <AiOutlineArrowUp
         onClick={toggle}
-        className="hover:cursor-pointer text-4xl"
+        className="hover:cursor-pointer text-3xl"
       />
     );
   }
   return (
     <AiOutlineArrowDown
       onClick={toggle}
-      className="hover:cursor-pointer text-4xl"
+      className="hover:cursor-pointer text-3xl"
     />
   );
 }

@@ -32,10 +32,11 @@ export function PomodoroGoals({
     <div className="bg-red-100 rounded-xl py-10 px-8">
       <div className="flex justify-between items-center cursor-pointer pb-3" onClick={toggle}>
         {/* title */}
-        <h2 className="text-gray-700 text-4xl font-extrabold pb-3 uppercase">
+        <h2 className="text-gray-700 text-3xl font-extrabold pb-3 uppercase">
           {title}
         </h2>
-        <Toggle toggleValue={toggleValue} toggle={toggle} />
+        {/* we pass an empty callback here because toggle value is changed upon click on the entire section */}
+        <Toggle toggleValue={toggleValue} toggle={() => {}} />
       </div>
       {toggleValue && (
         <div>

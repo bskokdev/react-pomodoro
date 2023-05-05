@@ -43,7 +43,7 @@ function App() {
   };
 
   return (
-    <div className="bg-red-200 flex flex-col items-center p-5 min-h-screen">
+    <div className="bg-red-200 flex flex-col items-center min-h-screen">
       {/* Header */}
       <div className="py-8">
         <h1 className="tracking-widest text-5xl uppercase font-extrabold text-center text-gray-700">
@@ -73,7 +73,7 @@ function App() {
           )}
         </PomodoroGoals>
       </div>
-      <Footer />
+      {/*<Footer />*/}
     </div>
   );
 }
