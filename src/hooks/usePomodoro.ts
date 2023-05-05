@@ -14,7 +14,7 @@ export function usePomodoro() {
   function pomodoro(): void {
     setIsRunning(false);
     setIsFinished(false);
-    setTimer(0.1 * 60);
+    setTimer(25 * 60);
   }
 
   function takeShortBreak(): void {

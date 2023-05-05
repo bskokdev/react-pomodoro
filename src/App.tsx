@@ -69,15 +69,12 @@ function App() {
           <PomodoroControls {...controlActions} />
           {!isFinished && <TimerControl {...timerControl} />}
           {isFinished && (
-              <div>
-                <Sound url="./alarm.wav" playStatus={"PLAYING"} loop={true} />
                 <ActionButton
                     onClick={pomodoro}
                     color="bg-orange-300"
                     hover="hover:bg-orange-400"
                     text="Reset"
                 />
-              </div>
           )}
         </PomodoroTimer>
         <PomodoroGoals title="Goals" {...goalsRenderProps}>
