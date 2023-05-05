@@ -2,7 +2,6 @@ import { AddPomodoro } from "./components/AddPomodoro";
 import { PomodoroControls } from "./components/controls/PomodoroControls";
 import { PomodoroGoalsGroupControls } from "./components/controls/PomodoroGoalsGroupControls";
 import { TimerControl } from "./components/controls/TimerControl";
-import { Footer } from "./components/Footer";
 import { PomodoroGoals } from "./components/goals/PomodoroGoals";
 import { PomodoroTimer } from "./components/PomodoroTimer";
 import { useGoals } from "./hooks/useGoals";
@@ -73,7 +72,6 @@ function App() {
           )}
         </PomodoroGoals>
       </div>
-      {/*<Footer />*/}
     </div>
   );
 }
