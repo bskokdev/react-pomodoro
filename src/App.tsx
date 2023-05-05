@@ -6,7 +6,6 @@ import { PomodoroGoals } from "./components/goals/PomodoroGoals";
 import { PomodoroTimer } from "./components/PomodoroTimer";
 import { useGoals } from "./hooks/useGoals";
 import { usePomodoro } from "./hooks/usePomodoro";
-import Sound from 'react-sound';
 import {ActionButton} from "./components/controls/ActionButton";
 import React from "react";
 
