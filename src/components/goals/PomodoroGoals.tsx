@@ -30,7 +30,7 @@ export function PomodoroGoals({
   const [toggleValue, toggle] = useToggle();
   return (
     <div className="bg-red-100 rounded-xl py-10 px-8">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center cursor-pointer pb-3" onClick={toggle}>
         {/* title */}
         <h2 className="text-gray-700 text-4xl font-extrabold pb-3 uppercase">
           {title}
