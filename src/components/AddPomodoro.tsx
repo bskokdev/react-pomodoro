@@ -22,7 +22,7 @@ export function AddPomodoro({ addGoalByName }: IAddPomodoroProps) {
 
   return (
     <form
-      className="flex flex-col gap-y-4 border-b-2 mb-10 text-white text-xl"
+      className="flex flex-col gap-y-4 border-b-2 mb-10 text-white text-md"
       onSubmit={(e) => handleSubmit(e)}
     >
       <input

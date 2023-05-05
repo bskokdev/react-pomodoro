@@ -10,13 +10,13 @@ export function PomodoroGoalTitle({
 }: IPomodoroGoalTitleProps) {
   if (finished) {
     return (
-      <h3 className="text-2xl order-last md:order-first uppercase font-extrabold line-through text-gray-400">
+      <h3 className="text-xl order-last md:order-first font-bold line-through text-gray-400">
         {title}
       </h3>
     );
   }
   return (
-    <h3 className="text-2xl order-last md:order-first uppercase font-extrabold">
+    <h3 className="text-xl order-last md:order-first font-bold">
       {title}
     </h3>
   );

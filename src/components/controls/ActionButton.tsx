@@ -18,7 +18,7 @@ export function ActionButton(props: IActionButtonProps) {
   return (
     <button
       {...props}
-      className={`${color} ${hover} transition px-4 py-3 rounded-xl uppercase font-extrabold`}
+      className={`${color} ${hover} transition px-4 py-3 rounded-xl font-bold uppercase`}
     >
       <div className="flex gap-x-2 items-center">
         {icon}
