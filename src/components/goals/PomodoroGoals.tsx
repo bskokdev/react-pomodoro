@@ -21,11 +21,8 @@ interface IPomodoroGoalsProps {
  * @param deleteGoal - callback for deleting a goal
  */
 export function PomodoroGoals({
-  goals,
-  title,
-  children,
-  completeGoal,
-  deleteGoal,
+  goals, title, children,
+  completeGoal, deleteGoal
 }: IPomodoroGoalsProps) {
   const [toggleValue, toggle] = useToggle();
   return (

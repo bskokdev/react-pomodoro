@@ -54,13 +54,8 @@ export function useTimer(defaultValue: number) {
   }
 
   return {
-    isRunning,
-    isFinished,
-    formattedTimer,
-    setTimer,
-    setIsRunning,
-    setIsFinished,
-    start,
-    pause,
+    isRunning, isFinished, formattedTimer,
+    setTimer, setIsRunning, setIsFinished,
+    start, pause,
   };
 }

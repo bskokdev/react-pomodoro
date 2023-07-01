@@ -6,11 +6,7 @@ interface IPomodoroControlsProps {
   takeLongBreak: () => void;
 }
 
-export function PomodoroControls({
-  pomodoro,
-  takeShortBreak,
-  takeLongBreak,
-}: IPomodoroControlsProps) {
+export function PomodoroControls({pomodoro, takeShortBreak, takeLongBreak}: IPomodoroControlsProps) {
   return (
     <div className="flex flex-col xl:flex-row xl:gap-x-4 gap-y-4 text-gray-700 text-2xl md:text-xl">
       <ActionButton

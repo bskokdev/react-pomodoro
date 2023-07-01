@@ -7,8 +7,7 @@ interface IPomodoroGoalsGroupControls {
 }
 
 export function PomodoroGoalsGroupControls({
-  deleteFinished,
-  deleteAllGoals,
+  deleteFinished, deleteAllGoals
 }: IPomodoroGoalsGroupControls) {
   return (
     <div className="flex gap-x-4 justify-end">

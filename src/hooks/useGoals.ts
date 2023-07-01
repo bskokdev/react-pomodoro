@@ -5,7 +5,7 @@ import { isIdxInArrayRange } from "../util";
 
 /**
  * This hook is responsible for managing the goals.
- * It allows to add, complete, delete and delete all goals in reusable way
+ * It allows adding, completing, deleting single and all goals in a reusable way
  */
 export function useGoals() {
   const [goals, setGoals] = useState<Goal[]>([]);
@@ -74,11 +74,7 @@ export function useGoals() {
   }
 
   return {
-    goals,
-    addGoalByName,
-    completeGoal,
-    deleteGoal,
-    deleteFinished,
-    deleteAllGoals,
+    goals, addGoalByName, completeGoal,
+    deleteGoal, deleteFinished, deleteAllGoals,
   };
 }

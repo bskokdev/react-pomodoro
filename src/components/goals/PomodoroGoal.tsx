@@ -12,11 +12,8 @@ interface IPomodoroGoalProps {
 
 /** Not finished goal view component */
 export function PomodoroGoal({
-  goalName,
-  index,
-  finished,
-  completeGoal,
-  deleteGoal,
+  goalName, index, finished,
+  completeGoal, deleteGoal,
 }: IPomodoroGoalProps) {
   return (
     <div className="flex flex-col gap-y-4 md:flex-row md:items-center md:justify-between md:gap-x-4 bg-red-200 rounded-xl px-4 py-4 my-4 font-bold text-gray-700">

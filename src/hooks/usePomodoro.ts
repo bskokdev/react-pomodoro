@@ -30,13 +30,8 @@ export function usePomodoro() {
   }
 
   return {
-    isRunning,
-    isFinished,
-    formattedTimer,
-    pomodoro,
-    takeShortBreak,
-    takeLongBreak,
-    start,
-    pause,
+    isRunning, isFinished, formattedTimer,
+    pomodoro, takeShortBreak, takeLongBreak,
+    start, pause,
   };
 }

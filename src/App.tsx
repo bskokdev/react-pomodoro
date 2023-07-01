@@ -14,23 +14,13 @@ import React from "react";
  */
 function App() {
   const {
-    isRunning,
-    isFinished,
-    formattedTimer,
-    start,
-    pause,
-    pomodoro,
-    takeShortBreak,
-    takeLongBreak,
+    isRunning, isFinished, formattedTimer,
+    start, pause, pomodoro, takeShortBreak, takeLongBreak,
   } = usePomodoro();
 
   const {
-    goals,
-    addGoalByName,
-    completeGoal,
-    deleteGoal,
-    deleteFinished,
-    deleteAllGoals,
+    goals, addGoalByName, completeGoal, deleteGoal,
+    deleteFinished, deleteAllGoals,
   } = useGoals();
 
   // controls for the timer
@@ -39,10 +29,7 @@ function App() {
 
   // goals grouped props and actions
   const goalsRenderProps = { goals, completeGoal, deleteGoal };
-  const goalsGroupsActions = {
-    deleteFinished,
-    deleteAllGoals,
-  };
+  const goalsGroupsActions = { deleteFinished, deleteAllGoals };
 
   return (
     <div className="bg-red-200 flex flex-col items-center min-h-screen">
