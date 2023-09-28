@@ -1,5 +1,9 @@
-import { useTimer } from "./useTimer";
+import {useTimer} from "./useTimer";
 
+/**
+ * This hook is a wrapper around the useTimer hook.
+ * It allows starting, pausing and resetting the timer in a reusable way.
+ */
 export function usePomodoro() {
   const {
     setTimer,
@@ -9,7 +13,8 @@ export function usePomodoro() {
     isFinished,
     start,
     pause,
-    formattedTimer } = useTimer(25);
+    formattedTimer
+  } = useTimer(25);
 
   function pomodoro(): void {
     setIsRunning(false);

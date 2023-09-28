@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { Goal } from "../types";
-import { z } from "zod";
-import { isIdxInArrayRange } from "../util";
+import {useEffect, useState} from "react";
+import {Goal} from "../types";
+import {z} from "zod";
+import {isIdxInArrayRange} from "../util";
 
 /**
  * This hook is responsible for managing the goals.
@@ -11,7 +11,7 @@ export function useGoals() {
   const [goals, setGoals] = useState<Goal[]>([]);
 
   // load goals from local storage on mount
-  // local storage persists even after page reload
+  // local storage persist even after page reload
   useEffect(() => {
     const goals = localStorage.getItem("goals");
     if (goals) {
@@ -36,7 +36,7 @@ export function useGoals() {
 
   // helper which creates a goal from a name and adds it
   function addGoalByName(name: string): void {
-    addGoal({ name, finished: false } as Goal);
+    addGoal({name, finished: false} as Goal);
   }
 
   function completeGoal(index: number): void {

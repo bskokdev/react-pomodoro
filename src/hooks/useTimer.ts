@@ -2,14 +2,16 @@ import {useEffect, useMemo, useState} from "react";
 import useSound from "use-sound";
 
 /**
- * A custom hook that provides a timer logic and a timer in the format of mm:ss
- * @return {TimerHook}
+ * This hook is responsible for managing the timer.
+ * It allows starting, pausing and resetting the timer in a reusable way
+ *
+ * @param defaultValue the default value of the timer in minutes
  */
 export function useTimer(defaultValue: number) {
   const [timer, setTimer] = useState<number>(defaultValue * 60);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [isFinished, setIsFinished] = useState<boolean>(false);
-  const [play, { sound }] = useSound('/alarm.wav');
+  const [play, {sound}] = useSound('/alarm.wav');
 
   // runs on component mount or if timer or isRunning changes
   // if isRunning is true and timer > 0, start the timer
@@ -19,7 +21,7 @@ export function useTimer(defaultValue: number) {
         setTimer(timer - 1);
       }, 1000);
       return () => clearTimeout(timeoutId);
-    } else if(timer == 0) {
+    } else if (timer == 0) {
       setIsFinished(true);
       play();
     }
