@@ -20,7 +20,7 @@ export function PomodoroTimer({formattedTimer, children}: IPomodoroTimerProps) {
           {formattedTimer}
         </h2>
         {/*Start or pause button*/}
-        <div className="text-3xl text-gray-700 flex flex-col items-center gap-y-6 px-20">
+        <div className="text-3xl text-gray-700 flex flex-col items-center gap-y-6 lg:px-20">
           {children}
         </div>
       </div>

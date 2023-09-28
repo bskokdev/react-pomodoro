@@ -24,7 +24,7 @@ export function PomodoroGoals({
                                 completeGoal, deleteGoal
                               }: IPomodoroGoalsProps) {
   return (
-      <div className="bg-gray-50 shadow-lg min-w-[500px] rounded-xl py-10 px-8">
+      <div className="bg-gray-50 shadow-lg lg:min-w-[500px] rounded-xl py-10 px-8">
         <div className="flex justify-between items-center pb-3">
           {/* title */}
           <h2 className="text-gray-700 text-3xl font-extrabold pb-3">
