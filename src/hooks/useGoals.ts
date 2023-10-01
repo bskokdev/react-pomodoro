@@ -36,7 +36,7 @@ export function useGoals() {
 
   // helper which creates a goal from a name and adds it
   function addGoalByName(name: string): void {
-    addGoal({name, finished: false} as Goal);
+    addGoal({ name, finished: false } as Goal);
   }
 
   function completeGoal(index: number): void {
@@ -74,7 +74,11 @@ export function useGoals() {
   }
 
   return {
-    goals, addGoalByName, completeGoal,
-    deleteGoal, deleteFinished, deleteAllGoals,
+    goals,
+    addGoalByName,
+    completeGoal,
+    deleteGoal,
+    deleteFinished,
+    deleteAllGoals,
   };
 }

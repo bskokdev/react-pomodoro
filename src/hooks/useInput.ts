@@ -16,5 +16,5 @@ export function useInput(initialValue: string = "") {
     setInputValue("");
   }
 
-  return {inputValue, handleChange, clearInput};
+  return { inputValue, handleChange, clearInput };
 }

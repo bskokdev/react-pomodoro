@@ -1,6 +1,6 @@
 import React from "react";
-import {ActionButton} from "./ActionButton";
-import {BsPauseCircleFill, BsPlayCircleFill} from "react-icons/bs";
+import { ActionButton } from "./ActionButton";
+import { BsPauseCircleFill, BsPlayCircleFill } from "react-icons/bs";
 
 interface ITimerControlProps {
   isRunning: boolean;
@@ -16,25 +16,25 @@ interface ITimerControlProps {
  * @param start - callback for starting the timer
  * @param pause - callback for pausing the timer
  */
-export function TimerControl({isRunning, start, pause}: ITimerControlProps) {
+export function TimerControl({ isRunning, start, pause }: ITimerControlProps) {
   if (isRunning) {
     return (
-        <ActionButton
-            onClick={pause}
-            color="bg-orange-500 text-white"
-            hover="hover:bg-orange-600"
-            text="Pause"
-            icon={<BsPauseCircleFill/>}
-        />
+      <ActionButton
+        onClick={pause}
+        color="bg-orange-500 text-white"
+        hover="hover:bg-orange-600"
+        text="Pause"
+        icon={<BsPauseCircleFill />}
+      />
     );
   }
   return (
-      <ActionButton
-          onClick={start}
-          color="bg-green-500 text-white"
-          hover="hover:bg-green-600"
-          text="Start"
-          icon={<BsPlayCircleFill/>}
-      />
+    <ActionButton
+      onClick={start}
+      color="bg-green-500 text-white"
+      hover="hover:bg-green-600"
+      text="Start"
+      icon={<BsPlayCircleFill />}
+    />
   );
 }

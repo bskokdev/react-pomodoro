@@ -11,7 +11,7 @@ export function useTimer(defaultValue: number) {
   const [timer, setTimer] = useState<number>(defaultValue * 60);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [isFinished, setIsFinished] = useState<boolean>(false);
-  const [play, {sound}] = useSound('/alarm.wav');
+  const [play, { sound }] = useSound("/alarm.wav");
 
   // runs on component mount or if timer or isRunning changes
   // if isRunning is true and timer > 0, start the timer
@@ -56,8 +56,13 @@ export function useTimer(defaultValue: number) {
   }
 
   return {
-    isRunning, isFinished, formattedTimer,
-    setTimer, setIsRunning, setIsFinished,
-    start, pause,
+    isRunning,
+    isFinished,
+    formattedTimer,
+    setTimer,
+    setIsRunning,
+    setIsFinished,
+    start,
+    pause,
   };
 }

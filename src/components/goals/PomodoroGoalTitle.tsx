@@ -11,21 +11,24 @@ interface IPomodoroGoalTitleProps {
  * @param title - Name of the goal
  * @param finished - Boolean that indicates if the goal is finished
  */
-export function PomodoroGoalTitle({title, finished}: IPomodoroGoalTitleProps) {
+export function PomodoroGoalTitle({
+  title,
+  finished,
+}: IPomodoroGoalTitleProps) {
   if (finished) {
     return (
-        <div className={"w-full overflow-hidden"}>
-          <h3 className="text-xl order-last md:order-first font-bold line-through text-gray-400 w-[200px] break-words">
-            {title}
-          </h3>
-        </div>
-    );
-  }
-  return (
       <div className={"w-full overflow-hidden"}>
-        <h3 className="text-xl order-last md:order-first font-bold w-[250px] break-words">
+        <h3 className="text-lg order-last md:order-first font-medium line-through text-gray-400 w-[200px] break-words">
           {title}
         </h3>
       </div>
+    );
+  }
+  return (
+    <div className={"w-full overflow-hidden"}>
+      <h3 className="text-lg order-last md:order-first font-medium w-[250px] break-words">
+        {title}
+      </h3>
+    </div>
   );
 }

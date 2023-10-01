@@ -13,7 +13,7 @@ export function usePomodoro() {
     isFinished,
     start,
     pause,
-    formattedTimer
+    formattedTimer,
   } = useTimer(25);
 
   function pomodoro(): void {
@@ -35,8 +35,13 @@ export function usePomodoro() {
   }
 
   return {
-    isRunning, isFinished, formattedTimer,
-    pomodoro, takeShortBreak, takeLongBreak,
-    start, pause,
+    isRunning,
+    isFinished,
+    formattedTimer,
+    pomodoro,
+    takeShortBreak,
+    takeLongBreak,
+    start,
+    pause,
   };
 }
